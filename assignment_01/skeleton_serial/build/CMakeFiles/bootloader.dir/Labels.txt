@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/CMakeFiles/bootloader
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/CMakeFiles/bootloader.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/CMakeFiles/bootloader-complete.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/bragi/Documents/Skolaverkefni/IOT/assignment_01/skeleton_serial/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
