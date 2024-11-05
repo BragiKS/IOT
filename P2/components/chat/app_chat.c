@@ -18,7 +18,7 @@ void chat_receive(const lownet_frame_t* frame) {
         memcpy(received_message, frame->payload, frame->length);  // Copy the message payload
         received_message[frame->length] = '\0';  // Null terminate
 
-        printf("Received a tell message: %s\n", received_message);
+        printf("Received a tell from 0x%02X %s\n", frame->source, received_message);
 
     } else if (frame->destination == 0xFF) {
         // This is a broadcast shout message.
@@ -26,7 +26,7 @@ void chat_receive(const lownet_frame_t* frame) {
         memcpy(broadcast_message, frame->payload, frame->length);
         broadcast_message[frame->length] = '\0';  // Null terminate
 
-        printf("Received a broadcast shout: %s\n", broadcast_message);
+        printf("Received a shout from 0x%02X: %s\n", frame->source, broadcast_message);
 
     }
 }

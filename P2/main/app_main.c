@@ -48,25 +48,16 @@ void app_frame_dispatch(const lownet_frame_t* frame) {
 
 // Command parser for user input that starts with '/'.
 void process_command(const char* command) {
-	// Example commands: "/ping", "/help", "/time"
+	// Example commands: "/ping", "/help", "/date"
 	if (strncmp(command, "/ping", 5) == 0) {
 
 		char* space_pos = strchr(command, ' ');
 
 		if (space_pos != NULL) {
-	    	// Extract destination ID (in hexadecimal format).
-    		char dest_id_str[4] = {0};  // Buffer for 2 hex digits plus null terminator
-
- 		   // Make sure we are copying only the correct number of characters (2 hex digits).
-    		size_t hex_len = space_pos - (command + 5);  // Length of the hex part
-    		if (hex_len > 2) {
-        		hex_len = 2;  // Limit to 2 characters (e.g., "ff")
-    		}
-
-    		strncpy(dest_id_str, command + 5, hex_len);  // Copy hex digits from command
 
     		// Convert to uint8_t
-    		uint8_t destination_id = (uint8_t)strtol(dest_id_str, NULL, 16);  // Convert hex string to uint8
+    		uint8_t destination_id = (uint8_t)strtol(command + 6, NULL, 16);  // Convert hex string to uint8
+			printf("Ping destination: %d\n", destination_id);
 
     		ping(destination_id);
 		} else {
@@ -81,11 +72,11 @@ void process_command(const char* command) {
 	} else if (strcmp(command, "/date") == 0) {
 
 		lownet_time_t current_time = lownet_get_time();
-
-		if (current_time.seconds == 0) {
+		if (current_time.seconds == 0 && current_time.parts == 0) {
 			printf("Network time is not available.\n");
 		} else {
-			printf("%lu.%u sec since the course started.\n", current_time.seconds, current_time.parts);
+			uint32_t parts = current_time.parts * 10 / 256;
+			printf("%lu.%lu sec since the course started.\n", current_time.seconds, parts);
 		}
 
 	} else {
@@ -102,10 +93,8 @@ void process_tell(const char* input) {
 		return;
 	}
 
-	// Extract destination ID (in hexadecimal format).
-	char dest_id_str[4] = {0};
-	strncpy(dest_id_str, input + 1, space_pos - input - 1);  // Skip '@' and get ID
-	uint8_t destination_id = (uint8_t)strtol(dest_id_str, NULL, 16);  // Convert to uint8
+	uint8_t destination_id = (uint8_t)strtol(input + 1, NULL, 16);  // Convert to uint8
+	printf("Destination ID: %d\n", destination_id);
 
 	// Extract message after destination ID.
 	const char* message = space_pos + 1;
